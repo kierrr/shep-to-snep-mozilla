@@ -1,41 +1,48 @@
 (function() {
 
-    function walk(node) 
+    function walk(node)
     {
         // I stole this function from here:
         // http://is.gd/mwZp7E
-    
+
         var child, next;
-    
-        switch ( node.nodeType )  
+
+        switch ( node.nodeType )
         {
             case 1:  // Element
             case 9:  // Document
             case 11: // Document fragment
                 child = node.firstChild;
-                while ( child ) 
+                while ( child )
                 {
                     next = child.nextSibling;
                     walk(child);
                     child = next;
                 }
                 break;
-    
+
             case 3: // Text node
                 handleText(node);
                 break;
         }
     }
-    
+
     function handleText(textNode)
     {
         var v = textNode.nodeValue;
-    
-        v = v.replace(/\bThe Cloud\b/g, "My Butt");
-        v = v.replace(/\bThe cloud\b/g, "My butt");
-        v = v.replace(/\bthe Cloud\b/g, "my Butt");
-        v = v.replace(/\bthe cloud\b/g, "my butt");
-    
+
+        v = v.replace(/\bshep\b/g, "snep");
+        v = v.replace(/\bShep\b/g, "Snep");
+        v = v.replace(/\bSHEP\b/g, "SNEP");
+        v = v.replace(/\bsheps\b/g, "sneps");
+        v = v.replace(/\bSheps\b/g, "Sneps");
+        v = v.replace(/\bsheppy\b/g, "sneppy");
+        v = v.replace(/\bSheppy\b/g, "Sneppy");
+        v = v.replace(/\bshepherd\b/g, "snepherd");
+        v = v.replace(/\bShepherd\b/g, "Snepherd");
+        v = v.replace(/\bbramble\b/g, "rubus");
+        v = v.replace(/\bBramble\b/g, "Rubus");
+
         textNode.nodeValue = v;
     }
 
